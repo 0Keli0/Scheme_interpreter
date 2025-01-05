@@ -1,0 +1,166 @@
+========================================
+MODULE 1: Default Operators
+----------------------------------------
+Arithmetic Operations:
+Value a: 10
+Value b: 5
+(+ a b) 15
+(- a b) 5
+(* a b) 50
+(/ a b) 2
+(div a b) 2.0
+(mod a b) 0
+----------------------------------------
+Relational Operators:
+Value a: 5
+Value b: 3
+(> a b) #t
+(< b a) #t
+(= a b) #f
+(>= b b) #t
+(<= a b) #f
+----------------------------------------
+Boolean Operators:
+Value a: #t
+Value b: 5
+Value c: 3
+(and a (< c b)) #t
+(or (> b c) (< 1 0)) #t
+(not a)#f
+========================================
+MODULE 2: Define and Conditionals
+----------------------------------------
+Defining Constants:
+Circle Area with radius 5: 78.53975
+----------------------------------------
+Defining Sum:
+ Sum of 3 and 4 is 7
+----------------------------------------
+Conditional `if`:
+x is greater
+y is greater
+x and y are equal
+----------------------------------------
+Multiple Conditions with cond:
+Positive
+Negative
+Zero
+Redifining number-description using cond with else:
+Positive
+Negative
+Zero
+========================================
+MODULE 3: Lists
+----------------------------------------
+List operators 
+my-list = (1 2 3 4 5)
+(car my-list): 1
+(cdr my-list): (2 3 4 5)
+(cons 0 my-list): (0 1 2 3 4 5)
+(null? '()): #t
+(null? my-list): #f
+----------------------------------------
+Lists are not mutable. List provided: (0 1 2 3)
+List provided after cons 1: (0 1 2 3)
+========================================
+MODULE 4: Recursion
+Running MCD Example:
+Introduce two values separately: 
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Greater common divisor of 314 and 17 is: 1
+----------------------------------------
+Sum of List Example:
+15
+----------------------------------------
+Factorial-Tail-Recursive Example:
+20! is 2432902008176640000
+========================================
+MODULE 5: Local Variables and Scoping
+Let Scope Example:
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Sum of 5 and 10 is: 15
+========================================
+MODULE 6: I/O
+Echo Input Example
+Enter a sentence: Error: Operator `let` variables. Expected 2 arguments, got 1
+You entered: Hello World!
+========================================
+MODULE 7: Higher-Order Functions
+Twice Example 
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Twice of double of 5 is 20
+----------------------------------------
+Map Example 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Squares of the list: (1 4 9 16)
+
+Map Example 2
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Double applied twice: (4 8 12 16)
+----------------------------------------
+Filter Example 
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Even numbers from the list: (2 4 6)
+========================================
+========================================
+ MODULE 8: Difference between `let` and `define` in terms of variable evaluation using MODULE 3: I/O
+Let: Asking for an input and evaluating `read` immediately.Error: Operator `let` variables. Expected 2 arguments, got 1
+This is your input: Variables are evaluated immediately with let!
+Define: Asking for an input and evaluating `read` only when the variable `input` is accessed.You have not accessed your input yet, but the variable `input` is declared.
+Now we access your input and display it:Variables are just evaluated when it is needed with define!
+Input displayed
+========================================
+ MODULE 9: DEFINE and LET Scopes
+Define affects the global scope
+Before calling DEFINE function:
+Var x1: 10
+Var x2: 20
+Inside DEFINE function scope:
+Var x1: 30
+Var x2: 40
+After calling DEFINE function:
+Var x1: 30
+Var x2: 40
+Let creates a new scope and does not affect the global scope
+Before entering LET scope:
+Var x1: 30
+Var x2: 40
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Inside the LET scope:
+Var x1: 50
+Var x2: 60
+Var x3: err
+After exiting LET scope:
+Var x1: 30
+Var x2: 40
+Var x3 will raise an error because it is not defined in the global scope
+Var x3: Error: Variable/Function `x3` not found
+None
+========================================
+MODULE 10: Error Checkers
+Most of the necessary error handlers occur because of the logic implemented in python.
+  To highlight some of them, I wanted to add the following.
+  Those that do not cause a direct effect on the program logic
+   are the ones that would really be necessary to implement,
+  which are those that have been detected and have not been commented out.
+----------------------------------------
+Too many arguments in `define` (variable) :
+(define var v1 v2) -> Error: Operator `define` as a variable. Expected 2 arguments, got 3
+
+----------------------------------------
+
+Error: `if` with invalid number of arguments:
+(if C, N1, N2, N3) -> Error: `if` statement requires at least 2 arguments and less than 3: condition, true branch, else branch. Got 4 arguments.
+
+----------------------------------------
+----------------------------------------
+***There are more examples than the ones that are printed.
+  Because they will directly affect the logic of the interpreter,
+  they are commented out. They will raise their error handler implemented
+  if `raiseError` undo comment at `raise`.***
+====================End of the execution====================

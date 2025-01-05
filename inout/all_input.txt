@@ -1,0 +1,24 @@
+10
+5
+5
+3
+#t
+5
+3
+314
+17
+20
+5
+10
+Hello World!
+Variables are evaluated immediately with let!
+Variables are just evaluated when it is needed with define!
+10
+20
+30
+40
+50
+60
+err
+It does not really matter
+Neither this line

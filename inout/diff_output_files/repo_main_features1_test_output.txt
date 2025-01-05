@@ -1,0 +1,65 @@
+========================================
+MODULE 1: Default Operators
+----------------------------------------
+Arithmetic Operations:
+Value a: 10
+Value b: 5
+(+ a b) 15
+(- a b) 5
+(* a b) 50
+(/ a b) 2
+(div a b) 2.00
+(mod a b) 0
+----------------------------------------
+Relational Operators:
+Value a: 5
+Value b: 3
+(> a b) #t
+(< b a) #t
+(= a b) #f
+(>= b b) #t
+(<= a b) #f
+----------------------------------------
+Boolean Operators:
+Value a: #t
+Value b: 5
+Value c: 3
+(and a (< c b)) #t
+(or (> b c) (< 1 0)) #t
+(not a)#f
+========================================
+MODULE 2: Define and Conditionals
+----------------------------------------
+Defining Constants:
+Circle Area with radius 5: 78.54
+----------------------------------------
+Defining Sum:
+ Sum of 3 and 4 is 7
+----------------------------------------
+Conditional `if`:
+x is greater
+y is greater
+x and y are equal
+----------------------------------------
+Multiple Conditions with cond:
+Positive
+Negative
+Zero
+Redifining number-description using cond with else:
+Positive
+Negative
+Zero
+========================================
+MODULE 3: Lists
+----------------------------------------
+List operators 
+my-list = (1 2 3 4 5)
+(car my-list): 1
+(cdr my-list): (2 3 4 5)
+(cons 0 my-list): (0 1 2 3 4 5)
+(null? '()): #t
+(null? my-list): #f
+----------------------------------------
+Lists are not mutable. List provided: (0 1 2 3)
+List provided after cons 1: (0 1 2 3)
+====================End of the execution====================

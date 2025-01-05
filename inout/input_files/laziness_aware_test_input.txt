@@ -1,0 +1,2 @@
+Variables are evaluated immediately with let!
+Variables are just evaluated when it is needed with define!

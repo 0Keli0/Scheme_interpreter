@@ -1,0 +1,30 @@
+========================================
+ MODULE 9: DEFINE and LET Scopes
+Define affects the global scope
+Before calling DEFINE function:
+Var x1: 10
+Var x2: 20
+Inside DEFINE function scope:
+Var x1: 30
+Var x2: 40
+After calling DEFINE function:
+Var x1: 30
+Var x2: 40
+Let creates a new scope and does not affect the global scope
+Before entering LET scope:
+Var x1: 30
+Var x2: 40
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Error: Operator `let` variables. Expected 2 arguments, got 1
+Inside the LET scope:
+Var x1: 50
+Var x2: 60
+Var x3: err
+After exiting LET scope:
+Var x1: 30
+Var x2: 40
+Var x3 will raise an error because it is not defined in the global scope
+Var x3: Error: Variable/Function `x3` not found
+None
+====================End of the execution====================
