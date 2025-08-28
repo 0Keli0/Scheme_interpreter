@@ -1,7 +1,7 @@
 import sys
 
 # from interpreter_utils.if_version.TreeParser_v1 import evalProgram
-from interpreter_utils.TreeParser import evalProgram
+from interpreter_utils.TreeEvaluator import evalProgram
 
 
 def main():

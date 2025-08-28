@@ -73,22 +73,24 @@
   (display (* "-" 40)) (newline)
   (display "Defining Constants:") (newline)
   (define pi 3.14159)
-  (define radius 5)
-  (display "Circle Area with radius 5: ")
-  (display (* pi (* radius radius))) ; Circle Area, Result: 78.53975
+  (define radius (read))
+  (display "Circle Area with radius ") (display radius) (display " is ")
+  (display (* pi (* radius radius))) ; Circle Area, Result: 78.53
   (newline)
 
   ;;; Defining basic function
   (display (* "-" 40)) (newline)
   (display "Defining Sum:") (newline)
+  (define s1 (read)) (define s2 (read))
   (define (sum x y)
     (+ x y))
-  (display " Sum of 3 and 4 is ")
-  (display (sum 3 4)) ; Function sum, Result: 7
+  (display " Sum of ") (display s1) (display " and ") (display s2) (display " is ")
+  (display (sum s1 s2)) ; Function sum, Result: 7
   (newline)
 
   ;;; Conditional if with function define
   (display (* "-" 40)) (newline)
+  (define i1 (read)) (define i2 (read))
   (display "Conditional `if`:") (newline)
   (define (compare-values x y)
     (if (> x y)
@@ -96,11 +98,14 @@
       (if (< x y)
         "y is greater"
         "x and y are equal")))
-  (display (compare-values 5 3)) ; Result: "x is greater"
+  (display "x=") (display i1)(display " and ") (display "y=") (display i2) (display " -> ")
+  (display (compare-values i1 i2)) ; Result: "x is greater"
   (newline)
-  (display (compare-values 3 5)) ; Result: "y is greater"
+  (display "x=") (display i2)(display " and ") (display "y=") (display i1) (display " -> ")
+  (display (compare-values i2 i1)) ; Result: "y is greater"
   (newline)
-  (display (compare-values 3 3)) ; Result: "x and y are equal"
+  (display "x=") (display i1)(display " and ") (display "y=") (display i1) (display " -> ")
+  (display (compare-values i1 i1)) ; Result: "x and y are equal"
   (newline)
 
   ;;; Multiple Conditions with cond
@@ -113,13 +118,16 @@
       ((< n 0) "Negative")
       (#t "Zero"))
     )
-  (display (number-description 5)) ; Result: "Positive"
+  (define c1 (read)) (define c2 (read)) (define c3 (read))
+  (display c1) (display " is ")
+  (display (number-description c1)) ; Result: "Positive"
   (newline)
-  (display (number-description -3)) ; Result: "Negative"
+  (display c2) (display " is ")
+  (display (number-description c2)) ; Result: "Negative"
   (newline)
-  (display (number-description 0)) ; Result: "Zero"
+  (display c3) (display " is ")
+  (display (number-description c3)) ; Result: "Zero"
   (newline)
-
   (display "Redifining number-description using cond with else:") (newline)
   (define (number-description n)
     (cond
@@ -127,11 +135,14 @@
       ((< n 0) "Negative")
       (else "Zero"))
     )
-  (display (number-description 5)) ; Result: "Positive"
+  (display c1) (display " is ")
+  (display (number-description c1)) ; Result: "Positive"
   (newline)
-  (display (number-description -3)) ; Result: "Negative"
+  (display c2) (display " is ")
+  (display (number-description c2)) ; Result: "Negative"
   (newline)
-  (display (number-description 0)) ; Result: "Zero"
+  (display c3) (display " is ")
+  (display (number-description c3)) ; Result: "Zero"
   (newline)
 
   ;; ============================================================
@@ -167,6 +178,8 @@
   (display my-list)                   ; Result: (0 1 2 3)
   (newline)
   )
+  ;; ============================================================
+;; Program Entry Point
 (main)
 
 

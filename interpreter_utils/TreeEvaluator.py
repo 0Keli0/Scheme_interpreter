@@ -13,7 +13,7 @@ def correctOutputExpression(expr):
         print("#t" if expr else "#f", end="")
     elif type(expr) == list:
         print(
-            f"{str(expr).replace("[", "(").replace("]", ")").replace(",", "")}",
+            str(expr).replace("[", "(").replace("]", ")").replace(",", ""),
             end="",
         )
     elif type(expr) == float:
@@ -60,8 +60,8 @@ class EvalVisitor(schemeVisitor):
             "<": (lambda x, y: x < y),
             ">=": (lambda x, y: x >= y),
             "<=": (lambda x, y: x <= y),
-            "#t": 1,
-            "#f": 0,
+            "#t": True,
+            "#f": False,
             "and": (lambda x, y: x and y),
             "or": (lambda x, y: x or y),
             "not": (lambda x: not x),
@@ -93,13 +93,13 @@ class EvalVisitor(schemeVisitor):
     def visitRoot(self, ctx):
         """Visits the root node and evaluates each expression."""
         s_expr = list(ctx.getChildren())
+        s_expr[0].getText()
+        _ = (self.visit(expr) for expr in s_expr[:-1])
 
-        _ = (correctOutputExpression(self.visit(expr)) for expr in s_expr[:-1])
-
-        if expr_sol := self.visit(s_expr[-1]) is not None:
-            correctOutputExpression(expr_sol)
-
-        print(f"{"="*20}End of the execution{"="*20}")
+        if (final_expr := self.visit(s_expr[-1])) is not None:
+            correctOutputExpression(final_expr)
+        print("")
+        print("=" * 20 + "End of the execution" + "=" * 20)
 
     def visitExpr_S(self, ctx):
         """Evaluates an S-expression."""
@@ -181,12 +181,14 @@ class EvalVisitor(schemeVisitor):
 
         # Case where input evals a string
         except (SyntaxError, NameError):
+            if input_taken == "#f":
+                return False
+            if input_taken == "#t":
+                return True
             return input_taken
 
     def handle_let(self, arguments_node, operator):
         """LET case for a local scope"""
-        """TODO: CHECK wtf is going on with this checker --> Problem laziness_aware_test_output"""
-        """Let local scope case"""
         # (let ((var1 value1)   (var2 value2) ...)  *expr)
 
         # New variables to add to the let scope
@@ -203,7 +205,6 @@ class EvalVisitor(schemeVisitor):
             [var] = expr_var.getChildren()
             # Extract variable names and their corresponding evaluated values for the let scope
             [*name_body_var] = list(var.getChildren())[1].getChildren()
-            # print( f"Let Checker{[v.getText() for v in name_body_var]}. NUMBER OF PARAMS = {len(name_body_var)}")
             # Check var value number of elements
 
             checkArgumentCount(f"`{operator}` variables", len(name_body_var), 2)
@@ -223,7 +224,6 @@ class EvalVisitor(schemeVisitor):
 
         # Len evaluation
         for [expr] in let_expr_s:
-            # print(f"Expression len: {expr.getText()}")
             let_solution = self.visit(expr)
 
         self.var_runtime = copy_actual_env
@@ -315,6 +315,11 @@ class EvalVisitor(schemeVisitor):
         [bool_label] = list(ctx.getChildren())
         return self.default_labels[bool_label.getText()]
 
+    def visitString(self, ctx):
+        """Processes a string parameter."""
+        string = ctx.getText().replace('"', "")
+        return string
+
     def visitVar(self, ctx):
         """Processes a variable or function."""
         func_var_text = ctx.getText()
@@ -343,11 +348,6 @@ class EvalVisitor(schemeVisitor):
         # No func_var found
         raiseError(f"Variable/Function `{func_var_text}` not found")
 
-    def visitString(self, ctx):
-        """Processes a string parameter."""
-        string = ctx.getText().replace('"', "")
-        return string
-
 
 def evalProgram(
     input_program="../scheme_programs/repo_main_features1.scm", show_visit_tree=0
@@ -374,20 +374,3 @@ def evalProgram(
         # Evaluate Tree
         visitor_eval = EvalVisitor()
         visitor_eval.visit(tree)
-
-
-evalProgram("/Users/h.gf/PycharmProjects/LISP_compiler/scheme_programs/test.scm")
-
-# python3 scheme.py ./scheme_programs/repo_main_features1_test.scm < ./inout/input_files/repo_main_features1_test_input.txt > ./inout/output_files/repo_main_features1_test_output.txt
-# diff ./inout/output_files/repo_main_features1_test_output.txt ./inout/diff_output_files/repo_main_features1_test_output.txt
-# python3 scheme.py ./scheme_programs/repo_main_features2_test.scm < ./inout/input_files/repo_main_features2_test_input.txt > ./inout/output_files/repo_main_features2_test_output.txt
-# diff ./inout/output_files/repo_main_features2_test_output.txt ./inout/diff_output_files/repo_main_features2_test_output.txt
-# python3 scheme.py ./scheme_programs/laziness_aware_test.scm <./inout/input_files/laziness_aware_test_input.txt > ./inout/output_files/laziness_aware_test_output.txt
-# diff ./inout/output_files/laziness_aware_test_output.txt ./inout/diff_output_files/laziness_aware_test_output.txt
-# python3 scheme.py ./scheme_programs/scope_test.scm <./inout/input_files/scope_test_input.txt > ./inout/output_files/scope_test_output.txt
-# diff ./inout/output_files/scope_test_output.txt ./inout/diff_output_files/scope_test_output.txt
-# python3 scheme.py ./scheme_programs/error_checkers_test.scm <./inout/input_files/error_checkers_test_input.txt > ./inout/output_files/error_checkers_test_output.txt
-# diff ./inout/output_files/error_checkers_test_output.txt ./inout/diff_output_files/error_checkers_test_output.txt
-
-# Variables are evaluated immediately with let!
-# Variables are just evaluated when it is needed with define!

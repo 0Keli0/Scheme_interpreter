@@ -15,8 +15,9 @@
 "Most of the necessary error handlers occur because of the logic implemented in python.
   To highlight some of them, I wanted to add the following.
   Those that do not cause a direct effect on the program logic
-   are the ones that would really be necessary to implement,
+  are the ones that would really be necessary to implement,
   which are those that have been detected and have not been commented out.")
+
   (newline)(display (* "--" 20))(newline)
   ;;Error in `define`: Too many arguments to define a variable
   (display "Too many arguments in `define` (variable) :")
@@ -25,32 +26,42 @@
   (newline)
   (display (* "--" 20))(newline)
 
-#|***
+
   ;; Error in `define`: Missing body
   (display "Missing body in `define`:")
   (newline)
-  (define (nobody-func) )
+  (display "(define (nobody-func) ) --> " )(define (nobody-func) )
+  (newline)
+  (nobody-func)
+  (display (* "--" 20))(newline)
+
+  ;; Error in defined function: Uncorrect number of params
+  (display "Uncorrected number of params calling a defined function:")
+  (newline)
+  (define (foo x y) (display x))
+  (display "foo(x, y) called as foo('' '' '') --> ")(foo "" "" "")
   (newline)
   (display (* "--" 20))(newline)
-|#
 
-#|***
+
+
   ;; Error in `read`: Arguments provided when none are expected
   (display "`read` with arguments:")
   (newline)
   (display "(read '()) -> ")(read '())
   (newline)
   (display (* "--" 20))(newline)
-|#
+
 
 #|***
   ;; Error in `let`: Unexpected number of arguments
-  (display "Error1: `let` defining variables: Too Many arguments")
+  (display "Error1: `let` defining variables: Too many arguments")
   (newline)
   (display "(let ((x 3 2)) -> ")(let ((x 3 2)) )
   (newline)
   (display (* "--" 20))(newline)
 |#
+
 #|***
   (display "Error2: `let` defining variables: Not enough arguments")
   (newline)
@@ -59,7 +70,6 @@
   (display (* "--" 20))(newline)
 |#
 
-    (newline)
   ;; Error in `if`: Invalid number of arguments
   (display "Error: `if` with invalid number of arguments:")
   (newline)
@@ -70,8 +80,9 @@
 #|***
   (display "(if C ) -> " )(if #t ())
   (newline)
-|#
   (display (* "--" 20))(newline)
+|#
+
 
 #|***
   ;; Undefined function or variable
@@ -80,14 +91,17 @@
   (display "Calling (undefined-function 1 2 3) -> ") (display (undefined-function 1 2 3))
   (newline)
 |#
+
   (display (* "--" 20))(newline)
   (display "***There are more examples than the ones that are printed.
   Because they will directly affect the logic of the interpreter,
   they are commented out. They will raise their error handler implemented
   if `raiseError` undo comment at `raise`.***")
-(newline)
+  (newline)
+
 )
-
+(define (main)
+  (error-checker-examples)
+  )
 ;; ============================================================
-(error-checker-examples)
-
+(main)

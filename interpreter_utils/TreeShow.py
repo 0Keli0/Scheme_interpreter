@@ -30,6 +30,14 @@ class TreeVisitor(schemeVisitor):
         self.level -= 1
         self.identificationTree(")")
 
+    def visitString(self, ctx):
+        string = ctx.getText().replace('"', "")
+        self.identificationTree(string)
+
+    def visitBoolean(self, ctx):
+        [bool_label] = list(ctx.getChildren())
+        self.identificationTree(f"{bool_label.getText()}")
+
     def visitNumber(self, ctx):
         [num] = list(ctx.getChildren())
         self.identificationTree(f"{num.getText()}")

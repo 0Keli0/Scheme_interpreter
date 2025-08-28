@@ -2,43 +2,34 @@
 MODULE 4: Recursion
 Running MCD Example:
 Introduce two values separately: 
-Error: Operator `let` variables. Expected 2 arguments, got 1
-Error: Operator `let` variables. Expected 2 arguments, got 1
-Greater common divisor of 314 and 17 is: 1
+Greatest common factor of 314 and 17 is: 1
 ----------------------------------------
-Sum of List Example:
-15
+Sum of List Example: 
+Sum '(1 2 3 4 5) = 15
 ----------------------------------------
 Factorial-Tail-Recursive Example:
 20! is 2432902008176640000
 ========================================
 MODULE 5: Local Variables and Scoping
 Let Scope Example:
-Error: Operator `let` variables. Expected 2 arguments, got 1
-Error: Operator `let` variables. Expected 2 arguments, got 1
-Error: Operator `let` variables. Expected 2 arguments, got 1
 Sum of 5 and 10 is: 15
 ========================================
 MODULE 6: I/O
 Echo Input Example
-Enter a sentence: Error: Operator `let` variables. Expected 2 arguments, got 1
+Enter a sentence: 
 You entered: Hello World!
 ========================================
 MODULE 7: Higher-Order Functions
 Twice Example 
-Error: Operator `let` variables. Expected 2 arguments, got 1
 Twice of double of 5 is 20
 ----------------------------------------
 Map Example 1
-Error: Operator `let` variables. Expected 2 arguments, got 1
-Squares of the list: (1 4 9 16)
+Squares of the list (1 2 3 4) --> (1 4 9 16)
 
 Map Example 2
-Error: Operator `let` variables. Expected 2 arguments, got 1
-Double applied twice: (4 8 12 16)
+Double applied twice  of (1 2 3 4) --> (4 8 12 16)
 ----------------------------------------
 Filter Example 
-Error: Operator `let` variables. Expected 2 arguments, got 1
-Even numbers from the list: (2 4 6)
-========================================
+Even numbers from (1 2 3 4 5 6) --> (2 4 6)
+
 ====================End of the execution====================

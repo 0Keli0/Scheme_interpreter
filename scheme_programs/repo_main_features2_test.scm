@@ -5,19 +5,19 @@
 
 ;; ============================================================
 ;; MODULE 4: Recursion
-;; Greatest Common Divisor by recursion
+;; Greatest Common Factor by recursion
 (define (mcd a b)
   (if (= b 0)
     a
     (mcd b (mod a b))))
 
-;; GCD given 2 numbers by input using let to provide local scope
+;; GCF given 2 numbers by input using let to provide local scope
 (define (mcd-example)
   (display "Introduce two values separately: ") (newline)
   (let ((a (read))    ;input 314
          (b (read)))  ;input 17
 
-    (display "Greater common divisor of ")
+    (display "Greatest common factor of ")
     (display a) (display " and ") (display b) (display " is: ")
     (display (mcd a b))
     (newline)
@@ -63,6 +63,7 @@
 (define (echo-input)
   (display "Enter a sentence: ")
   (let ((input (read)))
+    (newline)
     (display "You entered: ")
     (display input)
     (newline)))
@@ -95,14 +96,14 @@
 (define (map-example1)
   (define (square x) (* x x))
   (let ((lst '(1 2 3 4)))
-    (display "Squares of the list: ")
+    (display "Squares of the list ")(display lst) (display " --> ")
     (display (map square lst))
     (newline)))
 
 (define (map-example2)
   (define (apply-double-twice x) (apply-twice double x))
   (let ((lst '(1 2 3 4)))
-    (display "Double applied twice: ")
+    (display "Double applied twice ")(display " of ") (display lst) (display " --> ")
     (display (map apply-double-twice lst))
     (newline)))
 
@@ -120,7 +121,7 @@
 
 (define (filter-example)
   (let ((lst '(1 2 3 4 5 6)))
-    (display "Even numbers from the list: ")
+    (display "Even numbers from ") (display lst)  (display " --> ")
     (display (filter-even lst))
     (newline)))
 
@@ -135,8 +136,9 @@
       (mcd-example)
 
     (display (* "--" 20))(newline)
-      (display "Sum of List Example:")
+      (display "Sum of List Example: ")
       (newline)
+      (display "Sum '")(display '(1 2 3 4 5)) (display" = ")
       (display (suma-llista '(1 2 3 4 5))) ; Result: 15
       (newline)
       (display (* "--" 20))(newline)
@@ -177,7 +179,7 @@
   (display "Filter Example ")
   (newline)
   (filter-example)
-  (display (* "==" 20)) (newline)
+
   )
 ;; ============================================================
 ;; Program Entry Point

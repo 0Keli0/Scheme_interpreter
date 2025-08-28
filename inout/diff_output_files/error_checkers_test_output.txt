@@ -3,21 +3,32 @@ MODULE 10: Error Checkers
 Most of the necessary error handlers occur because of the logic implemented in python.
   To highlight some of them, I wanted to add the following.
   Those that do not cause a direct effect on the program logic
-   are the ones that would really be necessary to implement,
+  are the ones that would really be necessary to implement,
   which are those that have been detected and have not been commented out.
 ----------------------------------------
 Too many arguments in `define` (variable) :
 (define var v1 v2) -> Error: Operator `define` as a variable. Expected 2 arguments, got 3
 
 ----------------------------------------
+Missing body in `define`:
+(define (nobody-func) ) --> Error: Operator `define` has too few arguments.
 
+----------------------------------------
+Uncorrected number of params calling a defined function:
+foo(x, y) called as foo('' '' '') --> Error: Operator foo. Expected 2 arguments, got 3
+
+----------------------------------------
+`read` with arguments:
+(read '()) -> Error: Operator `read` does not have arguments. Expected 0 arguments, got 1
+
+----------------------------------------
 Error: `if` with invalid number of arguments:
 (if C, N1, N2, N3) -> Error: `if` statement requires at least 2 arguments and less than 3: condition, true branch, else branch. Got 4 arguments.
 
-----------------------------------------
 ----------------------------------------
 ***There are more examples than the ones that are printed.
   Because they will directly affect the logic of the interpreter,
   they are commented out. They will raise their error handler implemented
   if `raiseError` undo comment at `raise`.***
+
 ====================End of the execution====================

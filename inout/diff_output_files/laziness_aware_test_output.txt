@@ -1,10 +1,15 @@
 ========================================
  MODULE 8: Difference between `let` and `define` in terms of variable evaluation using MODULE 3: I/O
 
+----------------------------------------
 Let: Asking for an input and evaluating `read` immediately.
-This is your input: Variables are evaluated immediately with let!
+This is your input: 
+Variables are evaluated immediately with let!
+----------------------------------------
 Define: Asking for an input and evaluating `read` only when the variable `input` is accessed.You have not accessed your input yet, but the variable `input` is declared.
-Now we access your input and display it:Variables are just evaluated when it is needed with define!
+Now that we use input, we ask you to introduce it: 
+Variables are just evaluated when it is needed with define!
 Input displayed
+----------------------------------------
 
 ====================End of the execution====================

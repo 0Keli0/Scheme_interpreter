@@ -21,34 +21,34 @@ Value b: 3
 (<= a b) #f
 ----------------------------------------
 Boolean Operators:
-Value a: #t
+Value a: #f
 Value b: 5
 Value c: 3
-(and a (< c b)) #t
+(and a (< c b)) #f
 (or (> b c) (< 1 0)) #t
-(not a)#f
+(not a)#t
 ========================================
 MODULE 2: Define and Conditionals
 ----------------------------------------
 Defining Constants:
-Circle Area with radius 5: 78.54
+Circle Area with radius 5 is 78.54
 ----------------------------------------
 Defining Sum:
- Sum of 3 and 4 is 7
+ Sum of -4 and 11 is 7
 ----------------------------------------
 Conditional `if`:
-x is greater
-y is greater
-x and y are equal
+x=5 and y=3 -> x is greater
+x=3 and y=5 -> y is greater
+x=5 and y=5 -> x and y are equal
 ----------------------------------------
 Multiple Conditions with cond:
-Positive
-Negative
-Zero
+14 is Positive
+-13 is Negative
+0 is Zero
 Redifining number-description using cond with else:
-Positive
-Negative
-Zero
+14 is Positive
+-13 is Negative
+0 is Zero
 ========================================
 MODULE 3: Lists
 ----------------------------------------
@@ -62,4 +62,5 @@ my-list = (1 2 3 4 5)
 ----------------------------------------
 Lists are not mutable. List provided: (0 1 2 3)
 List provided after cons 1: (0 1 2 3)
+
 ====================End of the execution====================
